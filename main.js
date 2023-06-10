@@ -22,5 +22,27 @@ console.log(numberToDigits(135790)); // [1,3,5,7,9,0]
 
 // problem 8. Write a JavaScript program to filter out the specified values from a specified array. Return the original array without filtered values.
 
+function filterArray(orginalArray, valuesToFilter) {
+    var result = [];
+
+    for (var i = 0; i < orginalArray.length; i++) {
+        
+        var currentValue = orginalArray[i];   
+
+        if (!valuesToFilter.includes(currentValue)) {
+
+            result.push(currentValue);
+        }
+    }
+
+    return result;
+
+}
+
+console.log(filterArray([1,2,3,4,5,6], [2,4])); // [1,3,5,6]
+
+console.log(filterArray(["a", "b", "c", "d", "e", "f"], ["a","e","f"])); // ["b","c","d"]
+
+
 // problem 10. Write a JavaScript program to extract values at specified indexes from a specified array.
 
