@@ -46,3 +46,23 @@ console.log(filterArray(["a", "b", "c", "d", "e", "f"], ["a","e","f"])); // ["b"
 
 // problem 10. Write a JavaScript program to extract values at specified indexes from a specified array.
 
+function extractValuesAtIndex (array, indexs) {
+
+    var extractValue = [];
+
+    for (var i = 0; i < indexs.length; i++) {
+
+        var index = indexs[i];
+
+        if(index >= 0 && index < array.length) {
+
+            extractValue.push(array[index]); 
+        }
+    }
+    return extractValue;
+}
+
+console.log(extractValuesAtIndex (["a", "b", "c", "d", "e", "f"], [0, 2, 5]));
+
+console.log(extractValuesAtIndex (["4", "7", "1", "9", "3", "5"], [1, 2, 3]));
+
