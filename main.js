@@ -224,3 +224,39 @@ function removeElementsFromRight(array, n){
   console.log(removeElementsFromRight([1, 2, 3], 1)); // [1,2]
   console.log(removeElementsFromRight([1, 2, 3], 2)); // [1]
   console.log(removeElementsFromRight([1, 2, 3], 4)); // []
+
+
+// problem 20. Write a JavaScript program to extend a 3-digit color code to a 6-digit color code.
+
+
+
+// problem 21. Write a JavaScript program to get every nth element in a given array.
+
+function nthElements(array, n) {
+    const result = [];
+    
+    for (let i = n - 1; i < array.length; i += n) {
+      result.push(array[i]);
+    }
+    
+    return result;
+  }
+  
+ 
+  console.log(nthElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)); // [3,6,9]
+  console.log(nthElements([1, 2, 3, 4, 5, 6], 2)); // [2,4,6]
+  console.log(nthElements([1, 2, 3, 4, 5, 6], 3)); // [3,6]
+  console.log(nthElements([1, 2, 3, 4, 5, 6], 4)); // [4]
+
+  //////////////
+  /////////////////
+
+  const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+
+console.log(every_nth([1, 2, 3, 4, 5, 6], 1)); // [1,2,3,4,5,6]
+
+console.log(every_nth([1, 2, 3, 4, 5, 6], 2)); // [2,4,6]
+
+console.log(every_nth([1, 2, 3, 4, 5, 6], 3)); // [3,6]
+
+console.log(every_nth([1, 2, 3, 4, 5, 6], 4)); //[4]
