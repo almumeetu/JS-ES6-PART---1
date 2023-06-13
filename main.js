@@ -96,7 +96,7 @@ const random_hex_color_code = () => {
 
 //   problem 12. Write a JavaScript program to remove non-printable ASCII characters from a given string.
 
-const remove_non_ASCII = str => str.replace(/[^\x20-\x7E]/g, '');
+const remove_non_ASCII = str => str.replace(/[^\x20-\x7E]/g, ''); // ^ not\x20 hex code for space character- to \x7e hex code for ~ (tilde) character
 
 console.log(remove_non_ASCII('äÄçÇéÉêw3resouröceÖÐþúÚ')); // w3resource
 
@@ -104,7 +104,8 @@ console.log(remove_non_ASCII('äÄçÇéÉêw3resouröceÖÐþúÚ')); // w3reso
 ////////////////
 
 function removeNonASSCII(str) {
-    return str.replace(/[^\x20-\x7E]/g, '');
+    return str.replace(/[^ -~]/g, "");    
+            
 }
 console.log(removeNonASSCII("Éêw3resourö")); //w3resour
 
@@ -127,3 +128,24 @@ function removeNonPrintableCharacters (str) {
 
 console.log(removeNonPrintableCharacters("Hello,\x0B\tWorld!")); // Hello, World!
 console.log(removeNonPrintableCharacters("Éêw3resourö}<")); //w3resour 
+
+
+// problem 13. Write a JavaScript program to convert a given string's length to bytes.
+
+const lengthToBytes = (str) => {
+  
+    let size = new Blob([str]).size;
+    // The Blob object represents a blob, which is a file-like object of immutable, raw data; they can be read as text
+    // or binary data, or converted into a ReadableStream so its methods can be used for processing the data.
+    return size;
+  } 
+    
+  console.log(lengthToBytes("Geeksforgeeks")) // 13
+  console.log(lengthToBytes("true")) // 4
+  console.log(lengthToBytes("false")) // 5
+  console.log(lengthToBytes("12345")) // 5
+
+  //////////////////////////
+  /////////////////////
+
+  
