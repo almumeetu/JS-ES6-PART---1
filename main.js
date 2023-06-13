@@ -8,6 +8,7 @@ function numberToDigits(number) {
     var numberString = number.toString();
 
     for (var i = 0; i < numberString.length; i++){
+        
         digits.push(parseInt(numberString.charAt(i)));
     }
 
@@ -22,12 +23,12 @@ console.log(numberToDigits(135790)); // [1,3,5,7,9,0]
 
 // problem 8. Write a JavaScript program to filter out the specified values from a specified array. Return the original array without filtered values.
 
-function filterArray(orginalArray, valuesToFilter) {
+function filterArray(array, valuesToFilter) {
     var result = [];
 
-    for (var i = 0; i < orginalArray.length; i++) {
+    for (var i = 0; i < array.length; i++) {
         
-        var currentValue = orginalArray[i];   
+        var currentValue = array[i];   
 
         if (!valuesToFilter.includes(currentValue)) {
 
@@ -52,17 +53,43 @@ function extractValuesAtIndex (array, indexs) {
 
     for (var i = 0; i < indexs.length; i++) {
 
-        var index = indexs[i];
+        var currentValue = indexs[i];
 
-        if(index >= 0 && index < array.length) {
+        if(currentValue >= 0 && currentValue < array.length) {
 
-            extractValue.push(array[index]); 
+            extractValue.push(array[currentValue]); 
         }
     }
     return extractValue;
 }
 
-console.log(extractValuesAtIndex (["a", "b", "c", "d", "e", "f"], [0, 2, 5]));
+console.log(extractValuesAtIndex (["a", "b", "c", "d", "e", "f"], [0, 2, 5])); // ["a", "c", "f"]
 
-console.log(extractValuesAtIndex (["4", "7", "1", "9", "3", "5"], [1, 2, 3]));
+console.log(extractValuesAtIndex (["4", "7", "1", "9", "3", "5"], [1, 2, 3])); // ["7", "1", "9"]
+
+
+// problem 11. Write a JavaScript program to generate a random hexadecimal color code.
+
+const random_hex_color_code = () => {
+    let n = (Math.random() * 0xfffff * 1000000).toString(16);
+    return '#' + n.slice(0, 6);
+  };
+  
+  console.log(random_hex_color_code()) // #61f140
+
+  /////////////////////////
+  ///////////////////////////////
+  /////////////
+
+  function randomHexColor() {
+    const hexCharecters = "0123456789ABCDEF";
+    let color = "#";
+
+    for (let i = 0; i < 6; i++) {
+        const randomIndex = Math.floor(Math.random() * hexCharecters.length);
+        color += hexCharecters[randomIndex];
+    }
+    return color;
+  }
+  console.log(randomHexColor()); // #E5D499
 
