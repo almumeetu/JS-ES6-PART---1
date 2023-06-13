@@ -224,6 +224,27 @@ console.log(all([4, 2, 3], x => x < 1));
 // problem 17. Write a JavaScript program to split the values of two given arrays into two groups. If an element in the filter is true, 
 // the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
 
+function splitArray(array, filter) {
+  const array1 = [];
+  const array2 = [];
+
+  for ( let i = 0; i < array.length; i++){
+
+    if(filter[i]){
+
+      array1.push(array[i]);
+
+    }else {
+
+      array2.push(array[i]);
+    }
+  }
+
+  return [array1, array2]
+}
+console.log(splitArray([1, 2, 3, 4], [false, false, false, false]));
+console.log(splitArray([1, 2, 3, 4], [true, true, true, true]));
+console.log(splitArray([1, 2, 3, 4], [true, true, false, true]));
 
 
 // problem 18. Write a JavaScript program to remove specified elements from the left of a given array of elements.
@@ -236,7 +257,7 @@ function removeElementsFromLeft(array, n) {
 
   return array.slice(n);
 }
-console.log(removeElementsFromLeft([1, 2, 3])); // [1,2,3]
+
 console.log(removeElementsFromLeft([1, 2, 3], 1)); // [2,3]
 console.log(removeElementsFromLeft([1, 2, 3], 2)); // [3]
 console.log(removeElementsFromLeft([1, 2, 3], 4)); // []
@@ -269,7 +290,9 @@ function nthElements(array, n) {
   const result = [];
 
   for (let i = n - 1; i < array.length; i += n) {
+
     result.push(array[i]);
+    
   }
 
   return result;
