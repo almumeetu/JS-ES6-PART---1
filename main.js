@@ -93,3 +93,37 @@ const random_hex_color_code = () => {
   }
   console.log(randomHexColor()); // #E5D499
 
+
+//   problem 12. Write a JavaScript program to remove non-printable ASCII characters from a given string.
+
+const remove_non_ASCII = str => str.replace(/[^\x20-\x7E]/g, '');
+
+console.log(remove_non_ASCII('äÄçÇéÉêw3resouröceÖÐþúÚ')); // w3resource
+
+/////////////////////
+////////////////
+
+function removeNonASSCII(str) {
+    return str.replace(/[^\x20-\x7E]/g, '');
+}
+console.log(removeNonASSCII("Éêw3resourö")); //w3resour
+
+/////////////////////
+///////////////////////////
+
+function removeNonPrintableCharacters (str) {
+    var printableStr = "";
+
+    for ( var i = 0; i < str.length; i++) {
+        var charCode = str.charCodeAt(i);
+
+        if (charCode >= 32 && charCode <= 126) {
+            printableStr += str.charAt(i);
+        }
+    }
+
+    return printableStr;
+}
+
+console.log(removeNonPrintableCharacters("Hello,\x0B\tWorld!")); // Hello, World!
+console.log(removeNonPrintableCharacters("Éêw3resourö}<")); //w3resour 
