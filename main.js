@@ -203,7 +203,24 @@ function removeElementsFromLeft(array, n){
 
     return array.slice(n); 
   }
-  console.log(removeElementsFromLeft([1, 2, 3]));
-  console.log(removeElementsFromLeft([1, 2, 3], 1));
-  console.log(removeElementsFromLeft([1, 2, 3], 2));
-  console.log(removeElementsFromLeft([1, 2, 3], 4));
+  console.log(removeElementsFromLeft([1, 2, 3])); // [1,2,3]
+  console.log(removeElementsFromLeft([1, 2, 3], 1)); // [2,3]
+  console.log(removeElementsFromLeft([1, 2, 3], 2)); // [3]
+  console.log(removeElementsFromLeft([1, 2, 3], 4)); // []
+
+
+//problem 19. Write a JavaScript program to remove specified elements from the right of a given array of elements.
+
+
+function removeElementsFromRight(array, n){
+
+    if (n >= array.length) {
+        return [];
+      }
+
+    return array.slice(0, array.length - n); 
+  }
+
+  console.log(removeElementsFromRight([1, 2, 3], 1)); // [1,2]
+  console.log(removeElementsFromRight([1, 2, 3], 2)); // [1]
+  console.log(removeElementsFromRight([1, 2, 3], 4)); // []
