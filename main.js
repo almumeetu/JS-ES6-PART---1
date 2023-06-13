@@ -146,6 +146,10 @@ const lengthToBytes = (str) => {
   console.log(lengthToBytes("12345")) // 5
 
 
+//   problem 14. Write a JavaScript program to replace multiple object keys' names with the values provided.
+
+
+
 //   problem 15. Write a JavaScript program to return the minimum-maximum value
 //  of an array, after applying the provided function to set a comparing rule. 
 
@@ -177,3 +181,29 @@ function minMax(array, comparator) {
   const comparator = (a, b) => a - b;
   console.log(minMax(numbers, comparator));
   console.log(minMax([{ name: 'Kevin', age: 16 }, { name: 'John', age: 20 }, { name: 'Ani', age: 19 }], comparator));
+
+
+//   problem 16. Write a JavaScript function that returns true if the provided predicate function returns
+//    true for all elements in a collection, false otherwise.
+
+
+
+// problem 17. Write a JavaScript program to split the values of two given arrays into two groups. If an element in the filter is true, 
+// the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
+
+
+
+// problem 18. Write a JavaScript program to remove specified elements from the left of a given array of elements.
+
+function removeElementsFromLeft(array, n){
+
+    if (n >= array.length) {
+        return [];
+      }
+
+    return array.slice(n); 
+  }
+  console.log(removeElementsFromLeft([1, 2, 3]));
+  console.log(removeElementsFromLeft([1, 2, 3], 1));
+  console.log(removeElementsFromLeft([1, 2, 3], 2));
+  console.log(removeElementsFromLeft([1, 2, 3], 4));
