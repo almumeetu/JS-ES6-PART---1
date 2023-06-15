@@ -90,10 +90,10 @@ function randomHexColor() {
     color += hexCharecters[randomIndex];
   }
   return color;
-}
+}  
 console.log(randomHexColor()); // #E5D499
-
-
+ 
+                                            
 //   problem 12. Write a JavaScript program to remove non-printable ASCII characters from a given string.
 
 const remove_non_ASCII = str => str.replace(/[^\x20-\x7E]/g, ''); // ^ not\x20 hex code for space character- to \x7e hex code for ~ (tilde) character
@@ -334,3 +334,19 @@ function filterUniqueValues(array) {
 }
 
 console.log(filterUniqueValues([1, 2, 3, 4, 3, 2, 1, 5])); // Output: [4, 5]
+
+
+// problem 24. Write a JavaScript program to dcapitalize the first letter of a string.
+
+function decapitalizeFirstLetter(str) {
+  
+  if (typeof str !== 'string' || str.length === 0) {
+
+    return str;
+  }
+
+  return str[0].toLowerCase() + str.slice(1);
+}
+
+ 
+console.log(decapitalizeFirstLetter("W3resource")); // w3resource
