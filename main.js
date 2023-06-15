@@ -409,3 +409,16 @@ var array2 = [4, 5, 6, 7, 8];
 var comparator = function (a, b) { return a === b; };
 
 console.log(findElementsInArrays(array1, array2, comparator)); // Output: [1, 2, 3, 4, 5, 6, 7, 8]
+
+// problem 30. Write a JavaScript program to filter out the element(s) of a given array that have one of the specified values.
+
+function filterElements(array, values) {
+  return array.filter(function (element) {
+    return !values.includes(element);
+  });
+}
+
+var array = [1, 2, 3, 4, 5, 6, 7, 8];
+var values = [2, 4, 6];
+
+console.log(filterElements(array, values)); // Output: [1, 3, 5, 7, 8]
