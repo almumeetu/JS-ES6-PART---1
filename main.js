@@ -209,15 +209,15 @@ console.log(minMax([{ name: 'Kevin', age: 16 }, { name: 'John', age: 20 }, { nam
 //    true for all elements in a collection, false otherwise.
 
 function all(array, predicate) {
-  for ( let i = 0; i < array.length; i++) {
-    if(!predicate(array[i])){
-       return false;
+  for (let i = 0; i < array.length; i++) {
+    if (!predicate(array[i])) {
+      return false;
     }
   }
   return true;
 }
-console.log(all([4, 2, 3], x => x > 1)); 
-console.log(all([4, 2, 3], x => x < 1)); 
+console.log(all([4, 2, 3], x => x > 1));
+console.log(all([4, 2, 3], x => x < 1));
 
 
 
@@ -228,13 +228,13 @@ function splitArray(array, filter) {
   const array1 = [];
   const array2 = [];
 
-  for ( let i = 0; i < array.length; i++){
+  for (let i = 0; i < array.length; i++) {
 
-    if(filter[i]){
+    if (filter[i]) {
 
       array1.push(array[i]);
 
-    }else {
+    } else {
 
       array2.push(array[i]);
     }
@@ -292,7 +292,7 @@ function nthElements(array, n) {
   for (let i = n - 1; i < array.length; i += n) {
 
     result.push(array[i]);
-    
+
   }
 
   return result;
@@ -316,3 +316,21 @@ console.log(every_nth([1, 2, 3, 4, 5, 6], 2)); // [2,4,6]
 console.log(every_nth([1, 2, 3, 4, 5, 6], 3)); // [3,6]
 
 console.log(every_nth([1, 2, 3, 4, 5, 6], 4)); //[4]
+
+// problem 22. Write a JavaScript program to filter out non-unique values in an array.
+
+const filter_Non_Unique = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
+
+console.log(filter_Non_Unique([1, 2, 2, 3, 4, 4, 5])); // [1,3,5]
+console.log(filter_Non_Unique([1, 2, 3, 4]));   // [1,2,3,4]
+
+////////////////////
+///////////////////////
+
+function filterUniqueValues(array) {
+  return array.filter(function (value) {
+    return array.indexOf(value) === array.lastIndexOf(value);
+  });
+}
+
+console.log(filterUniqueValues([1, 2, 3, 4, 3, 2, 1, 5])); // Output: [4, 5]
