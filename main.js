@@ -350,3 +350,25 @@ function decapitalizeFirstLetter(str) {
 
  
 console.log(decapitalizeFirstLetter("W3resource")); // w3resource
+
+
+// problem 26. Write a JavaScript program that returns true if the string is y/yes or false if the string is n/no.
+
+function checkYesNo(string) {
+  if (typeof string !== 'string') {
+    return false;
+  }
+
+  var lowerCaseString = string.toLowerCase();
+
+  if( lowerCaseString === 'y' || lowerCaseString === 'yes') {
+    return true;
+  }
+  return false;
+}
+
+// Example usage
+console.log(checkYesNo("y"));    // Output: true
+console.log(checkYesNo("yes"));  // Output: true
+console.log(checkYesNo("n"));    // Output: false
+console.log(checkYesNo("no"));    // Output: false
