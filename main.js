@@ -90,10 +90,10 @@ function randomHexColor() {
     color += hexCharecters[randomIndex];
   }
   return color;
-}  
+}
 console.log(randomHexColor()); // #E5D499
- 
-                                            
+
+
 //   problem 12. Write a JavaScript program to remove non-printable ASCII characters from a given string.
 
 const remove_non_ASCII = str => str.replace(/[^\x20-\x7E]/g, ''); // ^ not\x20 hex code for space character- to \x7e hex code for ~ (tilde) character
@@ -339,7 +339,7 @@ console.log(filterUniqueValues([1, 2, 3, 4, 3, 2, 1, 5])); // Output: [4, 5]
 // problem 24. Write a JavaScript program to dcapitalize the first letter of a string.
 
 function decapitalizeFirstLetter(str) {
-  
+
   if (typeof str !== 'string' || str.length === 0) {
 
     return str;
@@ -348,7 +348,7 @@ function decapitalizeFirstLetter(str) {
   return str[0].toLowerCase() + str.slice(1);
 }
 
- 
+
 console.log(decapitalizeFirstLetter("W3resource")); // w3resource
 
 
@@ -361,14 +361,51 @@ function checkYesNo(string) {
 
   var lowerCaseString = string.toLowerCase();
 
-  if( lowerCaseString === 'y' || lowerCaseString === 'yes') {
+  if (lowerCaseString === 'y' || lowerCaseString === 'yes') {
     return true;
   }
   return false;
 }
 
-// Example usage
+
+console.log(checkYesNo("y"));    // true
+console.log(checkYesNo("yes"));  //  true
+console.log(checkYesNo("n"));    //  false
+console.log(checkYesNo("no"));    //  false
+
+//////////////////
+////////////////////////
+
+function checkYesNo(string) {
+  if (typeof string !== 'string') {
+    return false;
+  }
+  if (/^(y|yes)$/i.test(string)) {
+    return true;
+  }
+  return false;
+}
 console.log(checkYesNo("y"));    // Output: true
-console.log(checkYesNo("yes"));  // Output: true
-console.log(checkYesNo("n"));    // Output: false
-console.log(checkYesNo("no"));    // Output: false
+console.log(checkYesNo("no"));  // Output: false
+
+
+// problem 27. Write a JavaScript program to find every element in any of the two given arrays at once, using the provided comparator function.
+
+function findElementsInArrays(array1, array2, comparator) {
+  var concatArray = array1.concat(array2);
+  var uniqueElements = [];
+
+  concatArray.forEach(function (element) {
+    if (!uniqueElements.includes(element)) {
+      uniqueElements.push(element);
+    }
+  });
+
+  return uniqueElements;
+}
+
+var array1 = [1, 2, 3, 4, 5];
+var array2 = [4, 5, 6, 7, 8];
+var comparator = function (a, b) { return a === b; };
+
+console.log(findElementsInArrays(array1, array2, comparator)); // Output: [1, 2, 3, 4, 5, 6, 7, 8]
