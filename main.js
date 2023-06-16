@@ -422,3 +422,21 @@ var array = [1, 2, 3, 4, 5, 6, 7, 8];
 var values = [2, 4, 6];
 
 console.log(filterElements(array, values)); // Output: [1, 3, 5, 7, 8]
+
+
+// problem 31. Write a JavaScript program to find all elements in a given array except the first one. Return the whole array if its length is 1.
+
+function removeFirstElement(array) {
+
+  if (array.length === 1) { 
+
+    return array;
+
+  } else {
+
+    return array.slice(1); 
+
+  }
+}
+
+console.log(removeFirstElement([1, 2, 3, 4, 5])); // Output: [2, 3, 4, 5]
