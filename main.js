@@ -440,3 +440,18 @@ function removeFirstElement(array) {
 }
 
 console.log(removeFirstElement([1, 2, 3, 4, 5])); // Output: [2, 3, 4, 5]
+
+
+// problem 32.Write a JavaScript program to get the sum of a given array, after mapping each element to a value using the provided function.
+
+function sumMappedArray(array, fn) {
+  const mappedArray = array.map(fn);
+  
+  const sum = mappedArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0); 
+  return sum;
+}
+
+
+const mappingFunction = (element) => element * 4; 
+
+console.log(sumMappedArray([1, 2, 3, 4, 5], mappingFunction));  //60
