@@ -392,7 +392,7 @@ console.log(checkYesNo("no"));  // Output: false
 // problem 27. Write a JavaScript program to find every element in any of the two given arrays at once, using the provided comparator function.
 
 function findElementsInArrays(array1, array2, comparator) {
-  var concatArray = array1.concat(array2);
+  var concatArray = array1.concat(array2); //[1,2,3,4,5,4,5,6,7,8]
   var uniqueElements = [];
 
   concatArray.forEach(function (element) {
@@ -455,3 +455,25 @@ function sumMappedArray(array, fn) {
 const mappingFunction = (element) => element * 4; 
 
 console.log(sumMappedArray([1, 2, 3, 4, 5], mappingFunction));  //60
+
+// problem 33.Write a JavaScript program to generate a random number in the specified range. 
+
+function getRandomNumber(min, max) {
+
+  return Math.random() * (max - min) + min;
+}
+
+console.log(getRandomNumber(2, 10)); // 4.752344235774233
+
+
+// problem 34. Write a JavaScript program to generate a random integer in the specified range.
+
+function getRandomInteger(min, max) {
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log(getRandomInteger(2, 5)); // 5
+
+
+
