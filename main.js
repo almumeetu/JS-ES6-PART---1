@@ -322,6 +322,7 @@ console.log(every_nth([1, 2, 3, 4, 5, 6], 4)); //[4]
 const filter_Non_Unique = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
 
 console.log(filter_Non_Unique([1, 2, 2, 3, 4, 4, 5])); // [1,3,5]
+
 console.log(filter_Non_Unique([1, 2, 3, 4]));   // [1,2,3,4]
 
 ////////////////////
@@ -378,9 +379,9 @@ console.log(checkYesNo("no"));    //  false
 
 function checkYesNo(string) {
   if (typeof string !== 'string') {
-    return false;
-  }
-  if (/^(y|yes)$/i.test(string)) {
+    return false;                               // ^n	Matches any string with n at the beginning of it
+  }                                             // In regular expressions, the symbol $ is used to match the end of a string
+  if (/^(y|yes)$/i.test(string)) {              // i = regular expression to make the pattern case-insensitive 
     return true;
   }
   return false;
@@ -428,13 +429,13 @@ console.log(filterElements(array, values)); // Output: [1, 3, 5, 7, 8]
 
 function removeFirstElement(array) {
 
-  if (array.length === 1) { 
+  if (array.length === 1) {
 
     return array;
 
   } else {
 
-    return array.slice(1); 
+    return array.slice(1);
 
   }
 }
@@ -444,15 +445,15 @@ console.log(removeFirstElement([1, 2, 3, 4, 5])); // Output: [2, 3, 4, 5]
 
 // problem 32.Write a JavaScript program to get the sum of a given array, after mapping each element to a value using the provided function.
 
-function sumMappedArray(array, fn) {
-  const mappedArray = array.map(fn);
-  
-  const sum = mappedArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0); 
+function sumMappedArray(array, mappingFunction) {
+  const mappedArray = array.map(mappingFunction);
+
+  const sum = mappedArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   return sum;
 }
 
 
-const mappingFunction = (element) => element * 4; 
+const mappingFunction = (element) => element * 4;
 
 console.log(sumMappedArray([1, 2, 3, 4, 5], mappingFunction));  //60
 
@@ -474,6 +475,22 @@ function getRandomInteger(min, max) {
 }
 
 console.log(getRandomInteger(2, 5)); // 5
+
+// problem 35. Write a JavaScript program to get an array of given n random integers in the specified range.
+
+function getRandomIntegersArray(n, min, max) {
+  const result = [];
+
+  for (let i = 0; i < n; i++) {
+    const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+    result.push(randomInt);
+  }
+
+  return result;
+}
+
+console.log(getRandomIntegersArray(10, 1, 100));
+
 
 
 
