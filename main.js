@@ -329,8 +329,11 @@ console.log(filter_Non_Unique([1, 2, 3, 4]));   // [1,2,3,4]
 ///////////////////////
 
 function filterUniqueValues(array) {
+
   return array.filter(function (value) {
+
     return array.indexOf(value) === array.lastIndexOf(value);
+
   });
 }
 
@@ -393,12 +396,17 @@ console.log(checkYesNo("no"));  // Output: false
 // problem 27. Write a JavaScript program to find every element in any of the two given arrays at once, using the provided comparator function.
 
 function findElementsInArrays(array1, array2, comparator) {
+
   var concatArray = array1.concat(array2); //[1,2,3,4,5,4,5,6,7,8]
+
   var uniqueElements = [];
 
   concatArray.forEach(function (element) {
+
     if (!uniqueElements.includes(element)) {
+
       uniqueElements.push(element);
+
     }
   });
 
@@ -406,7 +414,9 @@ function findElementsInArrays(array1, array2, comparator) {
 }
 
 var array1 = [1, 2, 3, 4, 5];
+
 var array2 = [4, 5, 6, 7, 8];
+
 var comparator = function (a, b) { return a === b; };
 
 console.log(findElementsInArrays(array1, array2, comparator)); // Output: [1, 2, 3, 4, 5, 6, 7, 8]
@@ -414,12 +424,15 @@ console.log(findElementsInArrays(array1, array2, comparator)); // Output: [1, 2,
 // problem 30. Write a JavaScript program to filter out the element(s) of a given array that have one of the specified values.
 
 function filterElements(array, values) {
+
   return array.filter(function (element) {
+
     return !values.includes(element);
   });
 }
 
 var array = [1, 2, 3, 4, 5, 6, 7, 8];
+
 var values = [2, 4, 6];
 
 console.log(filterElements(array, values)); // Output: [1, 3, 5, 7, 8]
@@ -434,9 +447,7 @@ function removeFirstElement(array) {
     return array;
 
   } else {
-
     return array.slice(1);
-
   }
 }
 
@@ -446,9 +457,11 @@ console.log(removeFirstElement([1, 2, 3, 4, 5])); // Output: [2, 3, 4, 5]
 // problem 32.Write a JavaScript program to get the sum of a given array, after mapping each element to a value using the provided function.
 
 function sumMappedArray(array, mappingFunction) {
+
   const mappedArray = array.map(mappingFunction);
 
   const sum = mappedArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
   return sum;
 }
 
@@ -479,17 +492,33 @@ console.log(getRandomInteger(2, 5)); // 5
 // problem 35. Write a JavaScript program to get an array of given n random integers in the specified range.
 
 function getRandomIntegersArray(n, min, max) {
+
   const result = [];
 
   for (let i = 0; i < n; i++) {
+
+    const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    result.push(randomInt);
+  }
+  return result;
+}
+console.log(getRandomIntegersArray(10, 1, 100));
+
+
+// problem 36. Write a javaScript program to get array of given n random integers in the specified range. 
+
+function getRandomIntegerArray2(number, min, max) {
+  const result = [];
+
+  for(let i = 0; i < number; i++) {
     const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
     result.push(randomInt);
   }
-
   return result;
 }
+console.log(getRandomIntegersArray2(10, 1, 100));
 
-console.log(getRandomIntegersArray(10, 1, 100));
 
 
 
