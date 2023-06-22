@@ -573,3 +573,24 @@ function splitIntoGroups(array, filter) {
 }
 
 console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], [true, true, false, true])); // ["beep","boop","bar"],["foo"]]
+
+//////////////
+////////////////////
+
+function splitIntoGroups(array, filter) {
+  const group1 = [];
+  const group2 = [];
+
+  array.forEach((element, index) => {
+    if (filter[index]) {
+      group1.push(element);
+    } else {
+      group2.push(element);
+    }
+  });
+
+  return [group1, group2];
+}
+
+
+console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], [true, true, false, true])); // ["beep","boop","bar"],["foo"]]
