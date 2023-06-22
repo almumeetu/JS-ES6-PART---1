@@ -506,18 +506,32 @@ function getRandomIntegersArray(n, min, max) {
 console.log(getRandomIntegersArray(10, 1, 100));
 
 
-// problem 36. Write a javaScript program to get array of given n random integers in the specified range. 
+// problem 40. Write a JavaScript program to create an array of key-value pair arrays from a given object.
 
-function getRandomIntegerArray2(number, min, max) {
-  const result = [];
-
-  for(let i = 0; i < number; i++) {
-    const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
-    result.push(randomInt);
-  }
-  return result;
+function createKeyValuePairs(obj) {
+  return Object.entries(obj);
 }
-console.log(getRandomIntegersArray2(10, 1, 100));
+
+// Example usage
+const person = {
+  name: 'John Doe',
+  age: 30,
+  occupation: 'Engineer'
+};
+
+const keyValuePairs = createKeyValuePairs(person);
+console.log(keyValuePairs);
+
+
+
+// const object_to_pairs = obj => Object.keys(obj).map(k => [k, obj[k]]);
+// console.log(object_to_pairs({ a: 1, b: 2 }));
+//
+
+function object_to_pairs(obj) {
+  return Object.keys(obj).map(k => [k, obj[k]]);
+}
+console.log(object_to_pairs({ a: 1, b: 2, c: 3 }));
 
 
 
