@@ -557,3 +557,19 @@ const compact = arr => arr.filter(Boolean);
 console.log(compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34])); // [1,2,3,"a","s",34]
 
 console.log(compact([false, NaN, 'e' * 23])); // []
+
+
+// problem 45. Write a JavaScript program to split values into two groups. If an element in the filter is true, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
+
+function splitIntoGroups(array, filter) {
+
+  return array.reduce((acc, val, i) => {
+
+    acc[filter[i] ? 0 : 1].push(val);
+
+    return acc;
+
+  }, [[], []]);
+}
+
+console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], [true, true, false, true])); // ["beep","boop","bar"],["foo"]]
