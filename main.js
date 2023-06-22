@@ -512,15 +512,7 @@ function createKeyValuePairs(obj) {
   return Object.entries(obj);
 }
 
-// Example usage
-const person = {
-  name: 'John Doe',
-  age: 30,
-  occupation: 'Engineer'
-};
-
-const keyValuePairs = createKeyValuePairs(person);
-console.log(keyValuePairs);
+console.log(createKeyValuePairs({ name: 'John Doe', age: 30, occupation: 'Engineer'}));  // [["name","John Doe"],["age",30],["occupation","Engineer"]]
 
 
 
@@ -529,11 +521,29 @@ console.log(keyValuePairs);
 //
 
 function object_to_pairs(obj) {
+
   return Object.keys(obj).map(k => [k, obj[k]]);
 }
-console.log(object_to_pairs({ a: 1, b: 2, c: 3 }));
+console.log(object_to_pairs({ a: 1, b: 2, c: 3 })); // [["a",1],["b",2],["c",3]]
 
 
 
 
+// problem 41. Write a JavaScript program to create an object from the given key-value pairs.
 
+const object_From_Pairs = arr => arr.reduce((a, v) => ((a[v[0]] = v[1]), a), {});
+
+console.log(object_From_Pairs([['a', 1], ['b', 2]]));     // {"a":1,"b":2}
+
+console.log(object_From_Pairs([[1, 10], [2, 20], [3, 30]]));
+
+//////////////////////////
+////////////////////////////////
+////////////////////////
+
+function createObject(keyValuePairs) {
+
+  return Object.fromEntries(keyValuePairs);
+}
+
+console.log(createObject([['a', 1], ['b', 2]])); // {"a":1,"b":2}
