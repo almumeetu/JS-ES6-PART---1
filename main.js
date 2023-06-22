@@ -509,10 +509,11 @@ console.log(getRandomIntegersArray(10, 1, 100));
 // problem 40. Write a JavaScript program to create an array of key-value pair arrays from a given object.
 
 function createKeyValuePairs(obj) {
+
   return Object.entries(obj);
 }
 
-console.log(createKeyValuePairs({ name: 'John Doe', age: 30, occupation: 'Engineer'}));  // [["name","John Doe"],["age",30],["occupation","Engineer"]]
+console.log(createKeyValuePairs({ name: 'John Doe', age: 30, occupation: 'Engineer' }));  // [["name","John Doe"],["age",30],["occupation","Engineer"]]
 
 
 
@@ -547,3 +548,12 @@ function createObject(keyValuePairs) {
 }
 
 console.log(createObject([['a', 1], ['b', 2]])); // {"a":1,"b":2}
+
+
+// problem 44. Write a JavaScript program to remove false values from a given array.
+
+const compact = arr => arr.filter(Boolean);
+
+console.log(compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34])); // [1,2,3,"a","s",34]
+
+console.log(compact([false, NaN, 'e' * 23])); // []
