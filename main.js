@@ -597,6 +597,7 @@ console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], [true, true, false, 
 
 
 // problem 50. Write a JavaScript program to convert an integer to a suffixed string, adding am or pm based on its value.
+
 function get_Meridiem_Suffix_Of_Integer(num) {
 
   if (num >= 0 && num <= 23) {
@@ -608,12 +609,29 @@ function get_Meridiem_Suffix_Of_Integer(num) {
     return formattedNum.toString() + suffix;
 
   } else {
-    
+
     return 'Invalid input';
   }
 }
+ 
+console.log(get_Meridiem_Suffix_Of_Integer(0));  // "12am"
+console.log(get_Meridiem_Suffix_Of_Integer(11)); // "11am"
+console.log(get_Meridiem_Suffix_Of_Integer(13)); // "1pm"
+console.log(get_Meridiem_Suffix_Of_Integer(25)); // "Invalid input"
 
-console.log(get_Meridiem_Suffix_Of_Integer(0));
-console.log(get_Meridiem_Suffix_Of_Integer(11));
-console.log(get_Meridiem_Suffix_Of_Integer(13));
-console.log(get_Meridiem_Suffix_Of_Integer(25));
+// problem 53. Write a JavaScript program to initialize a two-dimensional array of given size and value.
+
+function initialize_2D_Array(rows, cols, value) {
+  const array = [];
+
+  for (let i = 0; i < rows; i++) {
+    const row = new Array(cols).fill(value);
+    array.push(row);
+  }
+
+  return array;
+}
+
+
+console.log(initialize_2D_Array(2, 2, 0)); // [[0,0],[0,0]]
+console.log(initialize_2D_Array(3, 3, 3)); // [[3,3,3],[3,3,3],[3,3,3]]
