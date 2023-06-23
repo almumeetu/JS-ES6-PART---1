@@ -594,3 +594,26 @@ function splitIntoGroups(array, filter) {
 
 
 console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], [true, true, false, true])); // ["beep","boop","bar"],["foo"]]
+
+
+// problem 50. Write a JavaScript program to convert an integer to a suffixed string, adding am or pm based on its value.
+function get_Meridiem_Suffix_Of_Integer(num) {
+
+  if (num >= 0 && num <= 23) {
+
+    const suffix = num >= 12 ? 'pm' : 'am';
+
+    const formattedNum = num % 12 === 0 ? 12 : num % 12;
+
+    return formattedNum.toString() + suffix;
+
+  } else {
+    
+    return 'Invalid input';
+  }
+}
+
+console.log(get_Meridiem_Suffix_Of_Integer(0));
+console.log(get_Meridiem_Suffix_Of_Integer(11));
+console.log(get_Meridiem_Suffix_Of_Integer(13));
+console.log(get_Meridiem_Suffix_Of_Integer(25));
