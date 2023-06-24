@@ -630,8 +630,26 @@ function initialize_2D_Array(rows, cols, value) {
   }
 
   return array;
-}
-
+};
 
 console.log(initialize_2D_Array(2, 2, 0)); // [[0,0],[0,0]]
 console.log(initialize_2D_Array(3, 3, 3)); // [[3,3,3],[3,3,3],[3,3,3]]
+
+// problem 54. Write a JavaScript program to initialize an array containing numbers in the specified range. Start and end are inclusive of their common point of difference.
+
+function initializeArray(start, end) {
+  const length = Math.abs(end - start) + 1;
+  const range = new Array(length);
+  
+  for (let i = 0; i < length; i++) {
+    range[i] = start < end ? start + i : start - i;
+  }
+  
+  return range;
+}
+
+// Example usage
+const start = 5;
+const end = 10;
+const result = initializeArray(start, end);
+console.log(result);
