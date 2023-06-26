@@ -359,15 +359,21 @@ console.log(decapitalizeFirstLetter("W3resource")); // w3resource
 // problem 26. Write a JavaScript program that returns true if the string is y/yes or false if the string is n/no.
 
 function checkYesNo(string) {
+
   if (typeof string !== 'string') {
+
     return false;
+
   }
 
   var lowerCaseString = string.toLowerCase();
 
   if (lowerCaseString === 'y' || lowerCaseString === 'yes') {
+
     return true;
+
   }
+
   return false;
 }
 
@@ -447,6 +453,7 @@ function removeFirstElement(array) {
     return array;
 
   } else {
+
     return array.slice(1);
   }
 }
@@ -554,12 +561,13 @@ console.log(createObject([['a', 1], ['b', 2]])); // {"a":1,"b":2}
 
 const compact = arr => arr.filter(Boolean);
 
-console.log(compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34])); // [1,2,3,"a","s",34]
+console.log(compact([0, true, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34])); // [1,2,3,"a","s",34]
 
 console.log(compact([false, NaN, 'e' * 23])); // []
 
 
-// problem 45. Write a JavaScript program to split values into two groups. If an element in the filter is true, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
+// problem 45. Write a JavaScript program to split values into two groups. If an element in the filter is true, 
+// the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
 
 function splitIntoGroups(array, filter) {
 
@@ -635,21 +643,12 @@ function initialize_2D_Array(rows, cols, value) {
 console.log(initialize_2D_Array(2, 2, 0)); // [[0,0],[0,0]]
 console.log(initialize_2D_Array(3, 3, 3)); // [[3,3,3],[3,3,3],[3,3,3]]
 
-// problem 54. Write a JavaScript program to initialize an array containing numbers in the specified range. Start and end are inclusive of their common point of difference.
 
-function initializeArray(start, end) {
-  const length = Math.abs(end - start) + 1;
-  const range = new Array(length);
-  
-  for (let i = 0; i < length; i++) {
-    range[i] = start < end ? start + i : start - i;
-  }
-  
-  return range;
-}
+// problem 56. Write a JavaScript program to check whether all elements in a given array are equal or not.
 
-// Example usage
-const start = 5;
-const end = 10;
-const result = initializeArray(start, end);
-console.log(result);
+const allEqual = arr => arr.every(val => val === arr[0]);
+
+console.log(allEqual([1, 2, 3, 4, 5, 6])); // false
+
+console.log(allEqual([12, 12, 12, 12])); // true
+
