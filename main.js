@@ -692,7 +692,7 @@ function splitIntoGroups(collection, predicate) {
   return [trueGroup, falseGroup];
 }
 
-console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f')); // [["beep","boop","bar"],["foo"]]
+console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f')); // [["foo"],["beep","boop","bar"]]
 
 // problem 61. Write a JavaScript program to cast the provided value as an array if it's not one.
 
@@ -706,9 +706,9 @@ console.log(castArray([100])); // [100]
 
 function castAsArray(value) {
   if (Array.isArray(value)) {
-    return value; // Already an array, return as is
+    return value; 
   } else {
-    return [value]; // Not an array, cast as a single-element array
+    return [value];
   }
 }
 console.log(castAsArray('w3r')); // ["w3r"]
@@ -730,3 +730,14 @@ chainAsync([
   }
 ]);  //0 seconds (after 1 second) 1 second
 
+// problem 63. Write a JavaScript program to clone a given regular expression.
+
+const cloneRegExp = regExp => new RegExp(regExp.source, regExp.flags);
+
+const regExp = /lorem ipsum/gi;
+
+console.log(regExp);  // {}
+
+const regExp2 = cloneRegExp(regExp);
+
+console.log(regExp2); // {}
