@@ -712,3 +712,21 @@ function castAsArray(value) {
   }
 }
 console.log(castAsArray('w3r')); // ["w3r"]
+
+// problem 62. Write a JavaScript program to chain asynchronous functions.
+
+const chainAsync = fns => {
+  let curr = 0;
+  const next = () => fns[curr++](next);
+  next();
+};
+chainAsync([
+  next => {
+    console.log('0 seconds');
+    setTimeout(next, 1000);
+  },
+  next => {
+    console.log('1 second');
+  }
+]);  //0 seconds (after 1 second) 1 second
+
