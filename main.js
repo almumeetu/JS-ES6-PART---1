@@ -670,3 +670,24 @@ console.log(averageBy([{ a: 4 }, { a: 2 }, { a: 8 }, { a: 6 }], 'a'));
 const bifurcateBy = (arr, fn) =>
   arr.reduce((acc, val, i) => (acc[fn(val, i) ? 0 : 1].push(val), acc), [[], []]);
 console.log(bifurcateBy(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'b'));
+
+///////////////////////
+//////////////////////////
+
+function splitIntoGroups(collection, predicate) {
+  const trueGroup = [];
+  const falseGroup = [];
+
+  for (let i = 0; i < collection.length; i++) {
+    const element = collection[i];
+    if (predicate(element)) {
+      trueGroup.push(element);
+    } else {
+      falseGroup.push(element);
+    }
+  }
+
+  return [trueGroup, falseGroup];
+}
+
+console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f'));
