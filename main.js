@@ -659,17 +659,19 @@ const averageBy = (arr, fn) =>
   arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val) => acc + val, 0) /
   arr.length;
 
-console.log(averageBy([{ a: 40 }, { a: 20 }, { a: 80 }, { a: 60 }], o => o.a));
+console.log(averageBy([{ a: 40 }, { a: 20 }, { a: 80 }, { a: 60 }], o => o.a)); // 50
 
-console.log(averageBy([{ a: 4 }, { a: 2 }, { a: 8 }, { a: 6 }], 'a'));
+console.log(averageBy([{ a: 4 }, { a: 2 }, { a: 8 }, { a: 6 }], 'a'));  // 5
 
 
 // problem 58. Write a JavaScript program to split values into two groups according to a predicate function.
 //  This specifies which group an element in the input collection belongs to.
 
 const bifurcateBy = (arr, fn) =>
+
   arr.reduce((acc, val, i) => (acc[fn(val, i) ? 0 : 1].push(val), acc), [[], []]);
-console.log(bifurcateBy(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'b'));
+
+console.log(bifurcateBy(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'b'));  // [["beep","boop","bar"],["foo"]]
 
 ///////////////////////
 //////////////////////////
@@ -690,4 +692,23 @@ function splitIntoGroups(collection, predicate) {
   return [trueGroup, falseGroup];
 }
 
-console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f'));
+console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f')); // [["beep","boop","bar"],["foo"]]
+
+// problem 61. Write a JavaScript program to cast the provided value as an array if it's not one.
+
+const castArray = val => (Array.isArray(val) ? val : [val]);
+
+console.log(castArray('w3r'));  // ["w3r"]
+console.log(castArray([100])); // [100]
+
+///////////////////////
+/////////////////
+
+function castAsArray(value) {
+  if (Array.isArray(value)) {
+    return value; // Already an array, return as is
+  } else {
+    return [value]; // Not an array, cast as a single-element array
+  }
+}
+console.log(castAsArray('w3r')); // ["w3r"]
