@@ -652,3 +652,21 @@ console.log(allEqual([1, 2, 3, 4, 5, 6])); // false
 
 console.log(allEqual([12, 12, 12, 12])); // true
 
+
+// problem 57. Write a JavaScript program to compute the average of an array, after mapping each element to a value using the provided function.
+
+const averageBy = (arr, fn) =>
+  arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val) => acc + val, 0) /
+  arr.length;
+
+console.log(averageBy([{ a: 40 }, { a: 20 }, { a: 80 }, { a: 60 }], o => o.a));
+
+console.log(averageBy([{ a: 4 }, { a: 2 }, { a: 8 }, { a: 6 }], 'a'));
+
+
+// problem 58. Write a JavaScript program to split values into two groups according to a predicate function.
+//  This specifies which group an element in the input collection belongs to.
+
+const bifurcateBy = (arr, fn) =>
+  arr.reduce((acc, val, i) => (acc[fn(val, i) ? 0 : 1].push(val), acc), [[], []]);
+console.log(bifurcateBy(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'b'));
