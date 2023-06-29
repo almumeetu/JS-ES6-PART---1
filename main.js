@@ -655,10 +655,14 @@ console.log(allEqual([12, 12, 12, 12])); // true
 
 // problem 57. Write a JavaScript program to compute the average of an array, after mapping each element to a value using the provided function.
 
-const averageBy = (arr, fn) =>
-  arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val) => acc + val, 0) /
-  arr.length;
+function averageBy (arr, fn){
+  const arrayMap = arr.map(typeof fn === 'function' ? fn : val => val[fn]);  // [4,2,8,6]
+  
+  const arrayReduce = arrayMap.reduce((acc, val) => acc + val, 0) / arr.length;
 
+  return arrayReduce;
+
+}
 console.log(averageBy([{ a: 40 }, { a: 20 }, { a: 80 }, { a: 60 }], o => o.a)); // 50
 
 console.log(averageBy([{ a: 4 }, { a: 2 }, { a: 8 }, { a: 6 }], 'a'));  // 5
@@ -693,7 +697,7 @@ function splitIntoGroups(collection, predicate) {
 }
 
 console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f')); // [["foo"],["beep","boop","bar"]]
-
+     
 // problem 61. Write a JavaScript program to cast the provided value as an array if it's not one.
 
 const castArray = val => (Array.isArray(val) ? val : [val]);
@@ -730,6 +734,7 @@ chainAsync([
   }
 ]);  //0 seconds (after 1 second) 1 second
 
+
 // problem 63. Write a JavaScript program to clone a given regular expression.
 
 const cloneRegExp = regExp => new RegExp(regExp.source, regExp.flags);
@@ -741,3 +746,15 @@ console.log(regExp);  // {}
 const regExp2 = cloneRegExp(regExp);
 
 console.log(regExp2); // {}
+                                                                                                                                                                                                                                                                                                      
+                                         
+// problem 66. Write a JavaScript program to perform right-to-left function composition.
+
+const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
+const add5 = x => x + 5;
+const multiply = (x, y) => x * y;
+const multiplyAndAdd5 = compose(
+  add5,
+  multiply
+);
+console.log(multiplyAndAdd5(5, 2));  /// 15
