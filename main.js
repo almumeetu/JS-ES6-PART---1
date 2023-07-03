@@ -782,3 +782,10 @@ console.log(countBy([6, 10, 100, 10], Math.sqrt));
 console.log(countBy([6.1, 4.2, 6.3], Math.floor));
 console.log(countBy(['one', 'two', 'three'], 'length'));
 
+// problem 70. Write a JavaScript program to count a value in an array.
+
+const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+console.log(countOccurrences([1, 1, 2, 1, 2, 3], 1));
+console.log(countOccurrences([1, 1, 2, 1, 2, 3], 2));
+console.log(countOccurrences([1, 1, 2, 1, 2, 3], 3));
+
