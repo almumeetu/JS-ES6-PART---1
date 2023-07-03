@@ -621,7 +621,7 @@ function get_Meridiem_Suffix_Of_Integer(num) {
     return 'Invalid input';
   }
 }
- 
+
 console.log(get_Meridiem_Suffix_Of_Integer(0));  // "12am"
 console.log(get_Meridiem_Suffix_Of_Integer(11)); // "11am"
 console.log(get_Meridiem_Suffix_Of_Integer(13)); // "1pm"
@@ -655,9 +655,9 @@ console.log(allEqual([12, 12, 12, 12])); // true
 
 // problem 57. Write a JavaScript program to compute the average of an array, after mapping each element to a value using the provided function.
 
-function averageBy (arr, fn){
+function averageBy(arr, fn) {
   const arrayMap = arr.map(typeof fn === 'function' ? fn : val => val[fn]);  // [4,2,8,6]
-  
+
   const arrayReduce = arrayMap.reduce((acc, val) => acc + val, 0) / arr.length;
 
   return arrayReduce;
@@ -697,7 +697,7 @@ function splitIntoGroups(collection, predicate) {
 }
 
 console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f')); // [["foo"],["beep","boop","bar"]]
-     
+
 // problem 61. Write a JavaScript program to cast the provided value as an array if it's not one.
 
 const castArray = val => (Array.isArray(val) ? val : [val]);
@@ -710,7 +710,7 @@ console.log(castArray([100])); // [100]
 
 function castAsArray(value) {
   if (Array.isArray(value)) {
-    return value; 
+    return value;
   } else {
     return [value];
   }
@@ -746,8 +746,8 @@ console.log(regExp);  // {}
 const regExp2 = cloneRegExp(regExp);
 
 console.log(regExp2); // {}
-                                                                                                                                                                                                                                                                                                      
-                                         
+
+
 // problem 66. Write a JavaScript program to perform right-to-left function composition.
 
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
@@ -789,3 +789,15 @@ console.log(countOccurrences([1, 1, 2, 1, 2, 3], 1));
 console.log(countOccurrences([1, 1, 2, 1, 2, 3], 2));
 console.log(countOccurrences([1, 1, 2, 1, 2, 3], 3));
 
+// problem 71. Write a JavaScript program to create a deep clone of an object.
+
+const deepClone = obj => {
+  let clone = Object.assign({}, obj);
+  Object.keys(clone).forEach(
+    key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
+  );
+  return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
+};
+const a = { foo: 'bar', obj: { a: 1, b: 2 } };
+const b = deepClone(a); // a !== b, a.obj !== b.obj
+console.log(b)
