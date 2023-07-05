@@ -871,3 +871,16 @@ const detectDeviceType = () =>
 console.log(detectDeviceType()); // Desktop
 
 
+// problem 73. Write a JavaScript program to return the difference between two arrays, after applying the provided function to each array element of both.
+
+function differenceWith(arr1, arr2, fn) {
+  const mappedArr1 = arr1.map(fn);
+  const mappedArr2 = arr2.map(fn);
+
+  return arr1.filter((element, index) => mappedArr2.indexOf(mappedArr1[index]) === -1);
+}
+
+
+console.log(differenceWith([2.1, 1.2], [2.3, 3.4], Math.floor)); // [1.2]
+
+console.log(differenceWith([{ x: 2 }, { x: 1 }], [{ x: 1 }], v => v.x)); // [{"x":2}]
