@@ -750,6 +750,25 @@ console.log(regExp2); // {}
 
 // problem 66. Write a JavaScript program to perform right-to-left function composition.
 
+function compose(...fns) {
+  return fns.reduce((f, g) => (...args) => f(g(...args)));
+}
+function add5(x) {
+  return x + 5;
+}
+function multiply(x, y) {
+  return x * y;
+}
+const multiplyAndAdd52 = compose(
+  add5,
+  multiply
+);
+console.log(multiplyAndAdd52(5, 2));  /// 15
+
+/////////////
+//////////////////////////////////////////
+///////////////////
+
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
 const add5 = x => x + 5;
 const multiply = (x, y) => x * y;
@@ -777,21 +796,21 @@ console.log(addAndSquare(3, 2));
 
 // problem 69. Write a JavaScript program to group array elements based on the given function. It return the count of elements in each group.
 
-const countBy = (arr, fn) =>
+// const countBy = (arr, fn) =>
 
-  arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val, i) => {
+//   arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val, i) => {
 
-    acc[val] = (acc[val] || 0) + 1;
+//     acc[val] = (acc[val] || 0) + 1;
 
-    return acc;
+//     return acc;
 
-  }, {});
+//   }, {});
 
-console.log(countBy([6, 10, 100, 10], Math.sqrt));
+// console.log(countBy([6, 10, 100, 10], Math.sqrt));
 
-console.log(countBy([6.1, 4.2, 6.3], Math.floor));
+// console.log(countBy([6.1, 4.2, 6.3], Math.floor));
 
-console.log(countBy(['one', 'two', 'three'], 'length'));
+// console.log(countBy(['one', 'two', 'three'], 'length'));
 
 // problem 70. Write a JavaScript program to count a value in an array.
 
@@ -806,7 +825,7 @@ console.log(countOccurrences([1, 1, 2, 1, 2, 3], 3)); // 1
 /////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-function countOccurrences2 (array, value) {
+function countOccurrences2(array, value) {
   let count = 0;
 
   for (let i = 0; i < array.length; i++) {
@@ -841,4 +860,14 @@ const a = { foo: 'bar', obj: { a: 1, b: 2 } };
 
 const b = deepClone(a); // a !== b, a.obj !== b.obj
 
-console.log(b)
+console.log(b);
+
+
+// problem 72. Write a JavaScript program to detect whether the website is opened on a mobile device or a desktop/laptop.
+const detectDeviceType = () =>
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    ? 'Mobile'
+    : 'Desktop';
+console.log(detectDeviceType()); // Desktop
+
+
