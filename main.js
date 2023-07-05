@@ -762,11 +762,15 @@ console.log(multiplyAndAdd5(5, 2));  /// 15
 // problem 67. Write a JavaScript program to perform left-to-right function composition.
 
 const composeRight = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
+
 const add = (x, y) => x + y;
+
 const square = x => x * x;
+
 const addAndSquare = composeRight(add, square);
 
 console.log(addAndSquare(1, 2));
+
 console.log(addAndSquare(3, 2));
 
 
@@ -774,30 +778,67 @@ console.log(addAndSquare(3, 2));
 // problem 69. Write a JavaScript program to group array elements based on the given function. It return the count of elements in each group.
 
 const countBy = (arr, fn) =>
+
   arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val, i) => {
+
     acc[val] = (acc[val] || 0) + 1;
+
     return acc;
+
   }, {});
+
 console.log(countBy([6, 10, 100, 10], Math.sqrt));
+
 console.log(countBy([6.1, 4.2, 6.3], Math.floor));
+
 console.log(countBy(['one', 'two', 'three'], 'length'));
 
 // problem 70. Write a JavaScript program to count a value in an array.
 
 const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
-console.log(countOccurrences([1, 1, 2, 1, 2, 3], 1));
-console.log(countOccurrences([1, 1, 2, 1, 2, 3], 2));
-console.log(countOccurrences([1, 1, 2, 1, 2, 3], 3));
+
+console.log(countOccurrences([1, 1, 2, 1, 2, 3], 1)); // 3
+
+console.log(countOccurrences([1, 1, 2, 1, 2, 3], 2)); // 2
+
+console.log(countOccurrences([1, 1, 2, 1, 2, 3], 3)); // 1
+////////////////////////////////
+/////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+function countOccurrences2 (array, value) {
+  let count = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === value) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(countOccurrences2([1, 1, 2, 1, 2, 3], 1));
+console.log(countOccurrences2([1, 1, 2, 1, 2, 3], 2));
+console.log(countOccurrences2([1, 1, 2, 1, 2, 3], 3));
 
 // problem 71. Write a JavaScript program to create a deep clone of an object.
 
 const deepClone = obj => {
+
   let clone = Object.assign({}, obj);
+
   Object.keys(clone).forEach(
+
     key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
+
   );
+
   return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
+
 };
 const a = { foo: 'bar', obj: { a: 1, b: 2 } };
+
 const b = deepClone(a); // a !== b, a.obj !== b.obj
+
 console.log(b)
