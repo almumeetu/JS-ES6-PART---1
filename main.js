@@ -888,5 +888,10 @@ console.log(differenceWith([{ x: 2 }, { x: 1 }], [{ x: 1 }], v => v.x)); // [{"x
 // problem 76. Write a JavaScript program to execute a provided function once for each array element, starting with the array's last element.
 const forEachRight = (arr, callback) =>
   arr.slice(0).reverse().forEach(callback);
-  
+
 forEachRight([1, 2, 3, 4], val => console.log(val)); // 
+
+// problem 77. Write a JavaScript program to iterate over all the properties of an object, running a callback for each one.
+
+const forOwn = (obj, fn) => Object.keys(obj).forEach(key => fn(obj[key], key, obj));
+forOwn({ foo: 'bar', a: 1 }, v => console.log(v)); // 'bar', 1
