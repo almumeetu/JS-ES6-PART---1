@@ -884,3 +884,9 @@ function differenceWith(arr1, arr2, fn) {
 console.log(differenceWith([2.1, 1.2], [2.3, 3.4], Math.floor)); // [1.2]
 
 console.log(differenceWith([{ x: 2 }, { x: 1 }], [{ x: 1 }], v => v.x)); // [{"x":2}]
+
+// problem 76. Write a JavaScript program to execute a provided function once for each array element, starting with the array's last element.
+const forEachRight = (arr, callback) =>
+  arr.slice(0).reverse().forEach(callback);
+  
+forEachRight([1, 2, 3, 4], val => console.log(val)); // 
