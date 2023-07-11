@@ -919,3 +919,33 @@ console.log(longestItem(...['a', 'ab', 'abc'], 'abcd'));
 console.log(longestItem([1, 2, 3], [1, 2], [1, 2, 3, 4, 5]));
 console.log(longestItem([1, 2, 3], 'foobar'));
 
+
+// problem 73. Write a JavaScript program to return the difference between two arrays, after applying the provided function to each array element of both.
+
+function differenceWith(arr1, arr2, fn) {
+  const mappedArr1 = arr1.map(fn);
+  const mappedArr2 = arr2.map(fn);
+
+  return arr1.filter((element, index) => mappedArr2.indexOf(mappedArr1[index]) === -1);
+}
+
+
+console.log(differenceWith([2.1, 1.2], [2.3, 3.4], Math.floor)); // [1.2]
+
+console.log(differenceWith([{ x: 2 }, { x: 1 }], [{ x: 1 }], v => v.x)); // [{"x":2}]
+
+
+
+// problem 67. Write a JavaScript program to perform left-to-right function composition.
+
+const composeRight = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
+
+const add = (x, y) => x + y;
+
+const square = x => x * x;
+
+const addAndSquare = composeRight(add, square);
+
+console.log(addAndSquare(1, 2));
+
+console.log(addAndSquare(3, 2));
