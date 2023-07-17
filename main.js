@@ -680,23 +680,23 @@ console.log(bifurcateBy(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'b'));  //
 ///////////////////////
 //////////////////////////
 
-function splitIntoGroups(collection, predicate) {
-  const trueGroup = [];
-  const falseGroup = [];
+// function splitIntoGroups(collection, predicate) {
+//   const trueGroup = [];
+//   const falseGroup = [];
 
-  for (let i = 0; i < collection.length; i++) {
-    const element = collection[i];
-    if (predicate(element)) {
-      trueGroup.push(element);
-    } else {
-      falseGroup.push(element);
-    }
-  }
+//   for (let i = 0; i < collection.length; i++) {
+//     const element = collection[i];
+//     if (predicate(element)) {
+//       trueGroup.push(element);
+//     } else {
+//       falseGroup.push(element);
+//     }
+//   }
 
-  return [trueGroup, falseGroup];
-}
+//   return [trueGroup, falseGroup];
+// }
 
-console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f')); // [["foo"],["beep","boop","bar"]]
+// console.log(splitIntoGroups(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'f')); // [["foo"],["beep","boop","bar"]]
 
 // problem 61. Write a JavaScript program to cast the provided value as an array if it's not one.
 
@@ -769,14 +769,14 @@ console.log(multiplyAndAdd52(5, 2));  /// 15
 //////////////////////////////////////////
 ///////////////////
 
-const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
-const add5 = x => x + 5;
-const multiply = (x, y) => x * y;
-const multiplyAndAdd5 = compose(
-  add5,
-  multiply
-);
-console.log(multiplyAndAdd5(5, 2));  /// 15
+// const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
+// const add5 = x => x + 5;
+// const multiply = (x, y) => x * y;
+// const multiplyAndAdd5 = compose(
+//   add5,
+//   multiply
+// );
+// console.log(multiplyAndAdd5(5, 2));  /// 15
 
 // problem 67. Write a JavaScript program to perform left-to-right function composition.
 
@@ -934,18 +934,21 @@ console.log(differenceWith([2.1, 1.2], [2.3, 3.4], Math.floor)); // [1.2]
 
 console.log(differenceWith([{ x: 2 }, { x: 1 }], [{ x: 1 }], v => v.x)); // [{"x":2}]
 
+// problem 80. Write a JavaScript program to implement the Luhn Algorithm used to validate identification numbers. For example, credit card numbers, IMEI numbers, National Provider Identifier numbers etc.
+const luhnCheck = num => {
+  let arr = (num + '')
+    .split('')
+    .reverse()
+    .map(x => parseInt(x));
+  let lastDigit = arr.splice(0, 1)[0];
+  let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
+  sum += lastDigit;
+  return sum % 10 === 0;
+};
+console.log(luhnCheck('4485275742308327'));
+console.log(luhnCheck(6011329933655299));
+console.log(luhnCheck(123456789));
 
 
-// problem 67. Write a JavaScript program to perform left-to-right function composition.
 
-const composeRight = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
 
-const add = (x, y) => x + y;
-
-const square = x => x * x;
-
-const addAndSquare = composeRight(add, square);
-
-console.log(addAndSquare(1, 2));
-
-console.log(addAndSquare(3, 2));
