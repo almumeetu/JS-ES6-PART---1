@@ -989,3 +989,19 @@ const users = {
   pebbles: { user: 'pebbles', age: 1 }
 };
 console.log(mapValues(users, u => u.age)); // {"fred":40,"pebbles":1}
+
+// 85. Write a JavaScript program to replace all but the last number of characters with the specified mask character.
+
+function maskString(str, num = -4, mask = '*') {
+  if (num >= 0) {
+    return str.slice(-num).padStart(str.length, mask);
+  } else {
+    return str.slice(0, num).padEnd(str.length, mask);
+  }
+}
+
+// Test cases
+console.log(maskString("1234567890")); // Output: "******7890"
+console.log(maskString("1234567890", 2)); // Output: "******90"
+console.log(maskString("1234567890", -2)); // Output: "12******90"
+console.log(maskString("1234567890", -6, '#')); // Output: "######7890"
