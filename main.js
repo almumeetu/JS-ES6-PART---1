@@ -966,3 +966,13 @@ const mapObject = (arr, fn) =>
   ))();
 const squareIt = arr => mapObject(arr, a => a * a);
 console.log(squareIt([1, 2, 3])); 
+
+// problem 83. Write a JavaScript program to create an updated string with the results of calling a provided function on every character in the called string.
+
+const mapString = (str, fn) =>
+  str
+    .split('')
+    .map((c, i) => fn(c, i, str))
+    .join('');
+
+console.log(mapString('Javascript exercises', c => c.toUpperCase())); //JAVASCRIPT EXERCISES
