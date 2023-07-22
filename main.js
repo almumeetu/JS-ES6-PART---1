@@ -1005,3 +1005,10 @@ console.log(maskString("1234567890")); // Output: "******7890"
 console.log(maskString("1234567890", 2)); // Output: "******90"
 console.log(maskString("1234567890", -2)); // Output: "12******90"
 console.log(maskString("1234567890", -6, '#')); // Output: "######7890"
+
+
+// problem 86. Write a JavaScript program to get the maximum value of an array, after mapping each element to a value using the provided function.
+
+const maxBy = (arr, fn) => Math.max(...arr.map(typeof fn === 'function' ? fn : val => val[fn]));
+console.log(maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n)); // 8
+console.log(maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'));  // 8
