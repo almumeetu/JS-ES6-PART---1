@@ -183,6 +183,191 @@ console.log(reduce_Which(
 
   [{ name: 'Kevin', age: 16 }, { name: 'John', age: 20 }, { name: 'Ani', age: 19 }],
   (a, b) => b.age - a.age));  //// { name: 'John', age: 20 },
+// problem 7. Write a JavaScript program to convert a specified number into an array of digits.
+
+function numberToDigits(number) {
+
+  var digits = [];
+
+  // convert the number to a string
+  var numberString = number.toString();
+
+  for (var i = 0; i < numberString.length; i++) {
+
+    digits.push(parseInt(numberString.charAt(i)));
+  }
+
+  return digits;
+}
+
+console.log(numberToDigits(123456)); // [1,2,3,4,5,6]
+
+console.log(numberToDigits(2468)); // [2,4,6,8]
+
+console.log(numberToDigits(135790)); // [1,3,5,7,9,0]
+
+// problem 8. Write a JavaScript program to filter out the specified values from a specified array. Return the original array without filtered values.
+
+function filterArray(array, valuesToFilter) {
+  var result = [];
+
+  for (var i = 0; i < array.length; i++) {
+
+    var currentValue = array[i];
+
+    if (!valuesToFilter.includes(currentValue)) {
+
+      result.push(currentValue);
+    }
+  }
+
+  return result;
+
+}
+
+console.log(filterArray([1, 2, 3, 4, 5, 6], [2, 4])); // [1,3,5,6]
+
+console.log(filterArray(["a", "b", "c", "d", "e", "f"], ["a", "e", "f"])); // ["b","c","d"]
+
+
+// problem 10. Write a JavaScript program to extract values at specified indexes from a specified array.
+
+function extractValuesAtIndex(array, indexs) {
+
+  var extractValue = [];
+
+  for (var i = 0; i < indexs.length; i++) {
+
+    var currentValue = indexs[i];
+
+    if (currentValue >= 0 && currentValue < array.length) {
+
+      extractValue.push(array[currentValue]);
+    }
+  }
+  return extractValue;
+}
+
+console.log(extractValuesAtIndex(["a", "b", "c", "d", "e", "f"], [0, 2, 5])); // ["a", "c", "f"]
+
+console.log(extractValuesAtIndex(["4", "7", "1", "9", "3", "5"], [1, 2, 3])); // ["7", "1", "9"]
+
+
+// problem 11. Write a JavaScript program to generate a random hexadecimal color code.
+
+const random_hex_color_code = () => {
+  let n = (Math.random() * 0xfffff * 1000000).toString(16);
+  return '#' + n.slice(0, 6);
+};
+
+console.log(random_hex_color_code()) // #61f140
+
+/////////////////////////
+///////////////////////////////
+/////////////
+
+function randomHexColor() {
+  const hexCharecters = "0123456789ABCDEF";
+  let color = "#";
+
+  for (let i = 0; i < 6; i++) {
+    const randomIndex = Math.floor(Math.random() * hexCharecters.length);
+    color += hexCharecters[randomIndex];
+  }
+  return color;
+}
+console.log(randomHexColor()); // #E5D499
+
+
+//   problem 12. Write a JavaScript program to remove non-printable ASCII characters from a given string.
+
+const remove_non_ASCII = str => str.replace(/[^\x20-\x7E]/g, ''); // ^ not\x20 hex code for space character- to \x7e hex code for ~ (tilde) character
+
+console.log(remove_non_ASCII('äÄçÇéÉêw3resouröceÖÐþúÚ')); // w3resource
+
+/////////////////////
+////////////////
+
+function removeNonASSCII(str) {
+  return str.replace(/[^ -~]/g, "");
+
+}
+console.log(removeNonASSCII("Éêw3resourö")); //w3resour
+
+/////////////////////
+///////////////////////////
+
+function removeNonPrintableCharacters(str) {
+  var printableStr = "";
+
+  for (var i = 0; i < str.length; i++) {
+    var charCode = str.charCodeAt(i);
+
+    if (charCode >= 32 && charCode <= 126) {
+      printableStr += str.charAt(i);
+    }
+  }
+
+  return printableStr;
+}
+
+console.log(removeNonPrintableCharacters("Hello,\x0B\tWorld!")); // Hello, World!
+console.log(removeNonPrintableCharacters("Éêw3resourö}<")); //w3resour 
+
+
+// problem 13. Write a JavaScript program to convert a given string's length to bytes.
+
+const lengthToBytes = (str) => {
+
+  let sizeObj = new Blob([str]).size;
+  // The Blob object represents a blob, which is a file-like object of immutable, raw data; they can be read as text
+  // or binary data, or converted into a ReadableStream so its methods can be used for processing the data.
+  return sizeObj;
+}
+
+console.log(lengthToBytes("Geeksforgeeks")) // 13
+console.log(lengthToBytes("true")) // 4
+console.log(lengthToBytes("false")) // 5
+console.log(lengthToBytes("12345")) // 5
+
+
+//   problem 14. Write a JavaScript program to replace multiple object keys' names with the values provided.
+
+const rename_keys = (obj1, obj2) =>
+  Object.keys(obj2).reduce(
+    (acc, key) => ({
+      ...acc,
+      ...{ [obj1[key] || key]: obj2[key] }
+    }),
+
+    {}
+  );
+const obj1 = { name: 'firstName', job: 'Actor' };
+const obj2 = { name: 'Bobo', job: 'Programmer', shoeSize: 100 };
+
+result = rename_keys(obj1, obj2);
+console.log("New Object");
+console.log(result);
+
+
+//   problem 15. Write a JavaScript program to return the minimum-maximum value
+//  of an array, after applying the provided function to set a comparing rule. 
+
+const reduce_Which = (arr, comparator = (a, b) => a - b) =>
+
+  arr.reduce((a, b) => (comparator(a, b) >= 0 ? b : a));
+
+
+
+
+console.log(reduce_Which([1, 3, 2]));
+
+console.log(reduce_Which([10, 30, 20], (a, b) => b - a));
+
+console.log(reduce_Which(
+
+  [{ name: 'Kevin', age: 16 }, { name: 'John', age: 20 }, { name: 'Ani', age: 19 }],
+  (a, b) => b.age - a.age));  //// { name: 'John', age: 20 },
 
 
 /////////////////////////
@@ -1019,101 +1204,12 @@ const maxN = (arr, n = 1) => [...arr].sort((a, b) => b - a).slice(0, n);
 console.log(maxN([1, 2, 3]));
 console.log(maxN([1, 2, 3], 2));
 
-// problem 73. Write a JavaScript program to return the difference between two arrays, after applying the provided function to each array element of both.
+// problem 88. Write a JavaScript program to get the median of an array of numbers.
 
-function differenceWith(arr1, arr2, fn) {
-  const mappedArr1 = arr1.map(fn);
-  const mappedArr2 = arr2.map(fn);
-
-  return arr1.filter((element, index) => mappedArr2.indexOf(mappedArr1[index]) === -1);
-}
-
-
-console.log(differenceWith([2.1, 1.2], [2.3, 3.4], Math.floor)); // [1.2]
-
-console.log(differenceWith([{ x: 2 }, { x: 1 }], [{ x: 1 }], v => v.x)); // [{"x":2}]
-
-// problem 80. Write a JavaScript program to implement the Luhn Algorithm used to validate identification numbers. For example, credit card numbers, IMEI numbers, National Provider Identifier numbers etc.
-const luhnCheck = num => {
-  let arr = (num + '')
-    .split('')
-    .reverse()
-    .map(x => parseInt(x));
-  let lastDigit = arr.splice(0, 1)[0];
-  let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
-  sum += lastDigit;
-  return sum % 10 === 0;
+const median = arr => {
+  const mid = Math.floor(arr.length / 2),
+    nums = [...arr].sort((a, b) => a - b);
+  return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
 };
-console.log(luhnCheck('4485275742308327'));
-console.log(luhnCheck(6011329933655299));
-console.log(luhnCheck(123456789));
-
-// problem 81 Write a JavaScript program to create an object with keys generated by running the provided function for each key. The object will have the same values as the provided object.
-const mapKeys = (obj, fn) =>
-  Object.keys(obj).reduce((acc, k) => {
-    acc[fn(obj[k], k, obj)] = obj[k];
-    return acc;
-  }, {});
-console.log(mapKeys({ a: 1, b: 2 }, (val, key) => key + val));
-
-//  problem 82: Write a JavaScript program to map array values to an object using a function. The key-value pairs consist of the original value as the key and the mapped value.
-
-
-const mapObject = (arr, fn) =>
-  (a => (
-    (a = [arr, arr.map(fn)]), a[0].reduce((acc, val, ind) => ((acc[val] = a[1][ind]), acc), {})
-  ))();
-const squareIt = arr => mapObject(arr, a => a * a);
-console.log(squareIt([1, 2, 3])); 
-
-// problem 83. Write a JavaScript program to create an updated string with the results of calling a provided function on every character in the called string.
-
-const mapString = (str, fn) =>
-  str
-    .split('')
-    .map((c, i) => fn(c, i, str))
-    .join('');
-
-console.log(mapString('Javascript exercises', c => c.toUpperCase())); //JAVASCRIPT EXERCISES
-
-// problem 84. Write a JavaScript program to create an object with the same keys as the provided object. It will also generate values generated by running the provided function for each value.
-
-const mapValues = (obj, fn) =>
-  Object.keys(obj).reduce((acc, k) => {
-    acc[k] = fn(obj[k], k, obj);
-    return acc;
-  }, {});
-const users = {
-  fred: { user: 'fred', age: 40 },
-  pebbles: { user: 'pebbles', age: 1 }
-};
-console.log(mapValues(users, u => u.age)); // {"fred":40,"pebbles":1}
-
-// 85. Write a JavaScript program to replace all but the last number of characters with the specified mask character.
-
-function maskString(str, num = -4, mask = '*') {
-  if (num >= 0) {
-    return str.slice(-num).padStart(str.length, mask);
-  } else {
-    return str.slice(0, num).padEnd(str.length, mask);
-  }
-}
-
-// Test cases
-console.log(maskString("1234567890")); // Output: "******7890"
-console.log(maskString("1234567890", 2)); // Output: "******90"
-console.log(maskString("1234567890", -2)); // Output: "12******90"
-console.log(maskString("1234567890", -6, '#')); // Output: "######7890"
-
-
-// problem 86. Write a JavaScript program to get the maximum value of an array, after mapping each element to a value using the provided function.
-
-const maxBy = (arr, fn) => Math.max(...arr.map(typeof fn === 'function' ? fn : val => val[fn]));
-console.log(maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n)); // 8
-console.log(maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'));  // 8
-
-// problem 87. Write a JavaScript program to get the n maximum elements from the provided array. If n is greater than or equal to the provided array's length, return the original array (sorted in descending order).
-
-const maxN = (arr, n = 1) => [...arr].sort((a, b) => b - a).slice(0, n);
-console.log(maxN([1, 2, 3]));
-console.log(maxN([1, 2, 3], 2));
+console.log(median([5, 6, 50, 1, -5]));
+console.log(median([1, 2, 3, 4, 5]));
