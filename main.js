@@ -645,7 +645,6 @@ function removeFirstElement(array) {
 
 console.log(removeFirstElement([1, 2, 3, 4, 5])); // Output: [2, 3, 4, 5]
 
-
 // problem 32.Write a JavaScript program to get the sum of a given array, after mapping each element to a value using the provided function.
 
 function sumMappedArray(array, mappingFunction) {
@@ -1213,3 +1212,29 @@ const median = arr => {
 };
 console.log(median([5, 6, 50, 1, -5]));
 console.log(median([1, 2, 3, 4, 5]));
+
+
+// problem 89. Write a JavaScript program to get the median of an array of numbers.
+
+function findMedian(arr) {
+  // Sort the array in ascending order
+  arr.sort(function (a, b) {
+    return a - b;
+  });
+
+  const length = arr.length;
+  const midIndex = Math.floor(length / 2);
+
+  if (length % 2 === 0) {
+    // Array has an even number of elements
+    return (arr[midIndex - 1] + arr[midIndex]) / 2;
+  } else {
+    // Array has an odd number of elements
+    return arr[midIndex];
+  }
+}
+
+// Test the function
+const numbers = [5, 2, 9, 1, 5, 6];
+const median = findMedian(numbers);
+console.log("Median:", median);
